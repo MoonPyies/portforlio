@@ -3,48 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Webcore 98</title>
+  <title>Portfolio Windows 98</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Startup Screen -->
-  <div id="startup-screen">
-    <img src="boot_animation.gif" alt="Startup Animation" />
-    <audio id="startup-sound" src="startup_sound.mp3" autoplay></audio>
+  <!-- Startup Prompt -->
+  <div id="startup-prompt">
+    <button id="start-btn" class="win98-button">Démarrer (Son fort)</button>
   </div>
 
-  <!-- Desktop -->
-  <div id="desktop" style="display: none;">
-    <!-- Window Example -->
-    <div class="window" id="window-about" style="left: 50px; top: 50px;">
-      <div class="title-bar">
-        <span>A propos de moi</span>
-        <div class="window-controls">
-          <button class="btn-minimize">_</button>
-          <button class="btn-maximize">🗖</button>
-          <button class="btn-close">X</button>
-        </div>
-      </div>
-      <div class="window-content">
-        <p>Salut ! Je suis un étudiant passionné par le web...</p>
-      </div>
-    </div>
+  <!-- Startup Screen -->
+  <div id="startup-screen" style="display: none;">
+    <img src="boot_animation.gif" alt="Startup Animation" />
+    <audio id="startup-sound" src="startup_sound.mp3"></audio>
+  </div>
 
-    <div class="window" id="window-work" style="left: 200px; top: 150px;">
-      <div class="title-bar">
-        <span>Mon travail</span>
-        <div class="window-controls">
-          <button class="btn-minimize">_</button>
-          <button class="btn-maximize">🗖</button>
-          <button class="btn-close">X</button>
+  <!-- Desktop Background -->
+  <div id="desktop" style="display: none;">
+    <div id="wallpaper-container">
+      <img id="wallpaper" src="98_wallpaper.png" alt="Wallpaper" />
+
+      <!-- Windows on top of wallpaper -->
+      <div class="window" id="window-about" style="top: 100px; left: 100px;">
+        <div class="title-bar">
+          <span>À propos de moi</span>
+          <div class="window-controls">
+            <button class="btn-minimize">_</button>
+            <button class="btn-maximize">▢</button>
+            <button class="btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-content">
+          <p>Bonjour ! Je suis étudiant en informatique passionné par le design rétro 📂</p>
         </div>
       </div>
-      <div class="window-content">
-        <p>Voici quelques projets que j'ai réalisés...</p>
+
+      <div class="window" id="window-work" style="top: 300px; left: 300px;">
+        <div class="title-bar">
+          <span>Mon travail</span>
+          <div class="window-controls">
+            <button class="btn-minimize">_</button>
+            <button class="btn-maximize">▢</button>
+            <button class="btn-close">✕</button>
+          </div>
+        </div>
+        <div class="window-content">
+          <div class="gallery">
+        </div>
+        <div class="video-section">
+          <p>Voir la vidéo :</p>
+          <button id="video-btn">
+            <img src="Video/video_thumb.png" alt="Vidéo" />
+          </button>
+          <video id="work-video" src="Video/sample.mp4" controls style="display: none;"></video>
+        <div class="gallery">
+            <button id="prev-btn" class="nav-btn">◀</button>
+            <img id="gallery-img" src="Art/image1.png" alt="Art" />
+            <button id="next-btn" class="nav-btn">▶</button>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- Fullscreen Overlay -->
+  <div id="fullscreen-overlay" style="display: none;">
+    <img id="fullscreen-img" src="" alt="Full Image" />
+    <button id="close-fullscreen">✕</button>
   </div>
 
   <script src="script.js"></script>
+
+  <div id="video-overlay" style="display: none;">
+    <video id="fullscreen-video" src="" controls autoplay></video>
+    <button id="close-video-fullscreen">✕</button>
+  </div>
 </body>
 </html>
