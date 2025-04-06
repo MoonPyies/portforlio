@@ -62,7 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Gallery
-  const images = Array.from({ length: 10 }, (_, i) => `Art/image${i + 1}.png`);
+  const images = [
+  "Art/image1.png",
+  "Art/image2.png",
+  "Art/image3.png",
+  "Art/image4.png",
+  "Art/image5.png",
+  "Art/image6.png",
+  "Art/image7.png",
+  "Art/image8.png",
+  "Art/image9.png",
+  "Art/image10.gif" // <- Use a GIF here
+];
   const video = "Video/sample.mp4";
   const galleryImage = document.getElementById("gallery-image");
   const galleryVideo = document.getElementById("gallery-video");
