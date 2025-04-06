@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       startupScreen.style.display = "none";
       desktop.style.display = "block";
-    }, 4000);
+    }, 8000);
   });
 
   // Window dragging
