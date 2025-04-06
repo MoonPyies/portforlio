@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="window-content">
-          <p>Bonjour ! Je suis passionnée par le rétro :D</p>
+          <p>Bonjour ! Je suis étudiant en informatique passionné par le design rétro 📂</p>
         </div>
       </div>
 
@@ -49,34 +49,28 @@
         </div>
         <div class="window-content">
           <div class="gallery">
-        </div>
-        <div class="video-section">
-          <p>Voir la vidéo :</p>
-          <button id="video-btn">
-            <img src="Video/video_thumb.png" alt="Vidéo" />
-          </button>
-          <video id="work-video" src="Video/sample.mp4" controls style="display: none;"></video>
-        <div class="gallery">
-            <button id="prev-btn" class="nav-btn">◀</button>
-            <img id="gallery-img" src="Art/image1.png" alt="Art" />
-            <button id="next-btn" class="nav-btn">▶</button>
+            <button class="gallery-arrow left">◀</button>
+            <img id="gallery-image" src="" alt="Artwork" style="width: 200px; display: none;" />
+            <video id="gallery-video" width="200" controls style="display: none;"></video>
+            <button class="gallery-arrow right">▶</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Fullscreen Overlay -->
-  <div id="fullscreen-overlay" style="display: none;">
-    <img id="fullscreen-img" src="" alt="Full Image" />
-    <button id="close-fullscreen">✕</button>
+  <!-- Fullscreen Image Viewer -->
+  <div id="fullscreen-overlay" class="fullscreen" style="display: none;">
+    <button id="close-fullscreen" class="fullscreen-close">✕</button>
+    <img id="fullscreen-img" src="" alt="Fullscreen" />
+  </div>
+
+  <!-- Fullscreen Video Viewer -->
+  <div id="video-overlay" class="fullscreen" style="display: none;">
+    <button id="close-video-fullscreen" class="fullscreen-close">✕</button>
+    <video id="fullscreen-video" controls autoplay></video>
   </div>
 
   <script src="script.js"></script>
-
-  <div id="video-overlay" style="display: none;">
-    <video id="fullscreen-video" src="" controls autoplay></video>
-    <button id="close-video-fullscreen">✕</button>
-  </div>
 </body>
 </html>

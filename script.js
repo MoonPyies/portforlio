@@ -1,104 +1,136 @@
-// Startup logic
-document.getElementById("start-btn").addEventListener("click", () => {
-  document.getElementById("startup-prompt").style.display = "none";
-  document.getElementById("startup-screen").style.display = "flex";
+document.addEventListener("DOMContentLoaded", () => {
+  const startBtn = document.getElementById("start-btn");
+  const startupScreen = document.getElementById("startup-screen");
+  const startupSound = document.getElementById("startup-sound");
+  const desktop = document.getElementById("desktop");
+  const wallpaperContainer = document.getElementById("wallpaper-container");
+  const fullscreenOverlay = document.getElementById("fullscreen-overlay");
+  const fullscreenImg = document.getElementById("fullscreen-img");
+  const closeFullscreen = document.getElementById("close-fullscreen");
+  const videoOverlay = document.getElementById("video-overlay");
+  const fullscreenVideo = document.getElementById("fullscreen-video");
+  const closeVideoFullscreen = document.getElementById("close-video-fullscreen");
 
-  const sound = document.getElementById("startup-sound");
-  sound.play().catch(err => {
-    console.warn("Sound error:", err);
+  // Launch startup sequence
+  startBtn.addEventListener("click", () => {
+    document.getElementById("startup-prompt").style.display = "none";
+    startupScreen.style.display = "flex";
+    startupSound.play();
+    setTimeout(() => {
+      startupScreen.style.display = "none";
+      desktop.style.display = "block";
+    }, 4000);
   });
 
-  setTimeout(() => {
-    document.getElementById("startup-screen").style.display = "none";
-    document.getElementById("desktop").style.display = "flex";
-  }, 7500); // 7.5 seconds to match sound duration
-});
+  // Window dragging
+  document.querySelectorAll(".window").forEach(win => {
+    const titleBar = win.querySelector(".title-bar");
+    let offsetX, offsetY, isDragging = false;
 
-// Drag logic for windows
-document.querySelectorAll('.window').forEach(win => {
-  const titleBar = win.querySelector('.title-bar');
-  titleBar.addEventListener('mousedown', (e) => {
-    let shiftX = e.clientX - win.getBoundingClientRect().left;
-    let shiftY = e.clientY - win.getBoundingClientRect().top;
+    titleBar.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      const rect = win.getBoundingClientRect();
+      const containerRect = wallpaperContainer.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
 
-    function moveAt(pageX, pageY) {
-      const bounds = document.getElementById('wallpaper-container').getBoundingClientRect();
-      let newLeft = pageX - shiftX;
-      let newTop = pageY - shiftY;
+      const onMouseMove = (e) => {
+        if (!isDragging) return;
 
-      newLeft = Math.max(bounds.left, Math.min(newLeft, bounds.right - win.offsetWidth));
-      newTop = Math.max(bounds.top, Math.min(newTop, bounds.bottom - win.offsetHeight));
+        let x = e.clientX - offsetX - containerRect.left;
+        let y = e.clientY - offsetY - containerRect.top;
 
-      win.style.left = (newLeft - bounds.left) + 'px';
-      win.style.top = (newTop - bounds.top) + 'px';
+        const maxX = wallpaperContainer.clientWidth - win.offsetWidth;
+        const maxY = wallpaperContainer.clientHeight - win.offsetHeight;
+
+        x = Math.max(0, Math.min(x, maxX));
+        y = Math.max(0, Math.min(y, maxY));
+
+        win.style.left = x + "px";
+        win.style.top = y + "px";
+      };
+
+      const onMouseUp = () => {
+        isDragging = false;
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+      };
+
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+    });
+  });
+
+  // Gallery
+  const images = Array.from({ length: 10 }, (_, i) => `Art/image${i + 1}.png`);
+  const video = "Video/sample.mp4";
+  const galleryImage = document.getElementById("gallery-image");
+  const galleryVideo = document.getElementById("gallery-video");
+  let currentIndex = 0;
+  let videoPlayed = false;
+
+  function updateGallery() {
+    if (currentIndex < images.length) {
+      galleryImage.src = images[currentIndex];
+      galleryImage.style.display = "block";
+      galleryVideo.pause();
+      galleryVideo.style.display = "none";
+    } else {
+      galleryImage.style.display = "none";
+      galleryVideo.src = video;
+      galleryVideo.style.display = "block";
+      if (!videoPlayed) {
+        galleryVideo.play();
+        videoPlayed = true;
+      }
     }
+  }
 
-    function onMouseMove(e) {
-      moveAt(e.pageX, e.pageY);
+  document.querySelector(".gallery-arrow.left").addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateGallery();
     }
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', () => {
-      document.removeEventListener('mousemove', onMouseMove);
-    }, { once: true });
   });
-});
 
-// Fake close button
-document.querySelectorAll('.btn-close').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    console.log("Fake close clicked");
+  document.querySelector(".gallery-arrow.right").addEventListener("click", () => {
+    if (currentIndex < images.length) {
+      currentIndex++;
+      updateGallery();
+    }
   });
-});
 
+  galleryImage.addEventListener("click", () => {
+    fullscreenImg.src = galleryImage.src;
+    fullscreenOverlay.style.display = "flex";
+  });
 
-// Gallery Logic
-const images = Array.from({ length: 10 }, (_, i) => `Art/image${i + 1}.png`);
-let currentImageIndex = 0;
+  closeFullscreen.addEventListener("click", () => {
+    fullscreenOverlay.style.display = "none";
+    fullscreenImg.src = "";
+  });
 
-const galleryImg = document.getElementById('gallery-img');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
+  fullscreenOverlay.addEventListener("click", () => {
+    fullscreenOverlay.style.display = "none";
+    fullscreenImg.src = "";
+  });
 
-prevBtn.addEventListener('click', () => {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  galleryImg.src = images[currentImageIndex];
-});
+  galleryVideo.addEventListener("click", () => {
+    fullscreenVideo.src = galleryVideo.src;
+    videoOverlay.style.display = "flex";
+  });
 
-nextBtn.addEventListener('click', () => {
-  currentImageIndex = (currentImageIndex + 1) % images.length;
-  galleryImg.src = images[currentImageIndex];
-});
+  closeVideoFullscreen.addEventListener("click", () => {
+    videoOverlay.style.display = "none";
+    fullscreenVideo.pause();
+    fullscreenVideo.src = "";
+  });
 
-galleryImg.addEventListener('click', () => {
-  const fullImg = document.getElementById('fullscreen-img');
-  fullImg.src = galleryImg.src;
-  document.getElementById('fullscreen-overlay').style.display = 'flex';
-});
+  videoOverlay.addEventListener("click", () => {
+    videoOverlay.style.display = "none";
+    fullscreenVideo.pause();
+    fullscreenVideo.src = "";
+  });
 
-document.getElementById('close-fullscreen').addEventListener('click', () => {
-  document.getElementById('fullscreen-overlay').style.display = 'none';
-});
-
-
-// Video Button & Fullscreen
-const videoBtn = document.getElementById('video-btn');
-const workVideo = document.getElementById('work-video');
-const videoOverlay = document.getElementById('video-overlay');
-const fullscreenVideo = document.getElementById('fullscreen-video');
-const closeVideoBtn = document.getElementById('close-video-fullscreen');
-
-videoBtn.addEventListener('click', () => {
-  workVideo.style.display = 'block';
-});
-
-workVideo.addEventListener('click', () => {
-  fullscreenVideo.src = workVideo.src;
-  videoOverlay.style.display = 'flex';
-});
-
-closeVideoBtn.addEventListener('click', () => {
-  fullscreenVideo.pause();
-  videoOverlay.style.display = 'none';
+  updateGallery();
 });

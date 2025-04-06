@@ -37,32 +37,41 @@ body {
   z-index: 9998;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
 #desktop {
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
+
 
 #wallpaper-container {
   width: 1156px;
   height: 864px;
-  position: relative;
   background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: block;
+  margin:auto;
+  margin-top: calc((100vh - 864px) / 2);
 }
 
 #wallpaper {
-  width: 1156px;
-  height: 864px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
 }
 
 .window {
@@ -119,12 +128,6 @@ body {
   color: black;
 }
 
-html, body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
 
 
 .gallery {
@@ -132,6 +135,14 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+.gallery-arrow {
+  font-size: 16px;
+  padding: 4px 8px;
+  background: #C0C0C0;
+  border: 2px outset #fff;
+  cursor: pointer;
 }
 
 .gallery img {
@@ -150,34 +161,31 @@ html, body {
   font-family: "MS Sans Serif", sans-serif;
 }
 
-#fullscreen-overlay {
+.fullscreen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: black;
-  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
-#fullscreen-overlay img {
-  max-width: 1156px;
-  max-height: 864px;
+.fullscreen img,
+.fullscreen video {
+  max-width: 90%;
+  max-height: 90%;
 }
 
-#close-fullscreen {
+.fullscreen-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  padding: 5px 10px;
   background: #C0C0C0;
   border: 2px outset #fff;
-  padding: 2px 6px;
-  font-size: 18px;
   cursor: pointer;
-  font-family: "MS Sans Serif", sans-serif;
 }
 
 
@@ -196,7 +204,7 @@ html, body {
 }
 
 #video-btn img {
-  width: 100px;
+  width: 200px;
   height: auto;
   border: 2px solid black;
 }
