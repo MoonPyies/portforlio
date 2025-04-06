@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="98ico.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio Windows 98</title>
   <link rel="stylesheet" href="style.css" />
@@ -10,7 +9,7 @@
 <body>
   <!-- Startup Prompt -->
   <div id="startup-prompt">
-    <button id="start-btn" class="win98-button">Démarrer (Son fort)</button>
+    <button id="start-btn" class="win98-button">Demarrer (Son fort)</button>
   </div>
 
   <!-- Startup Screen -->
@@ -21,11 +20,11 @@
 
   <!-- Desktop Background -->
   <div id="desktop" style="display: none;">
-    <div id="wallpaper-container">
+    <div id="wallpaper-container" >
       <img id="wallpaper" src="98_wallpaper.png" alt="Wallpaper" />
 
       <!-- Windows on top of wallpaper -->
-      <div class="window" id="window-about" style="top: 100px; left: 100px;">
+      <div class="window" id="window-about" style="top: 100px; left: 100px; display: none;">
         <div class="title-bar">
           <span>À propos de moi</span>
           <div class="window-controls">
@@ -39,7 +38,7 @@
         </div>
       </div>
 
-      <div class="window" id="window-work" style="top: 300px; left: 300px;">
+      <div class="window" id="window-work" style="top: 300px; left: 300px; display: none;">
         <div class="title-bar">
           <span>Mon travail</span>
           <div class="window-controls">
@@ -49,15 +48,20 @@
           </div>
         </div>
         <div class="window-content">
-          <div class="gallery">
-            <button class="gallery-arrow left">◀</button>
-            <img id="gallery-image" src="" alt="Artwork" style="width: 200px; display: none;" />
-            <video id="gallery-video" width="200" controls style="display: none;"></video>
-            <button class="gallery-arrow right">▶</button>
-          </div>
-        </div>
+		<div class="gallery">
+			<button class="gallery-arrow left">◀</button>
+			<img id="gallery-image" src="" alt="Artwork" style="width: 200px; display: none;" />
+			<video id="gallery-video" width="200" controls style="display: none;"></video>
+			<button class="gallery-arrow right">▶</button>
+		  </div>
+		  <p id="gallery-description" class="gallery-desc">Description ici</p>
+		</div>
       </div>
     </div>
+  <div id="floating-taskbar">
+	  <button class="taskbar-btn" data-target="window-about"><b>A propos</b></button>
+	  <button class="taskbar-btn" data-target="window-work"><b>Mes travaux</b></button>
+  </div>
   </div>
 
   <!-- Fullscreen Image Viewer -->

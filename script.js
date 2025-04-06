@@ -69,22 +69,41 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
   let videoPlayed = false;
 
-  function updateGallery() {
-    if (currentIndex < images.length) {
-      galleryImage.src = images[currentIndex];
-      galleryImage.style.display = "block";
-      galleryVideo.pause();
-      galleryVideo.style.display = "none";
-    } else {
-      galleryImage.style.display = "none";
-      galleryVideo.src = video;
-      galleryVideo.style.display = "block";
-      if (!videoPlayed) {
-        galleryVideo.play();
-        videoPlayed = true;
-      }
+const descriptions = [
+  "Image 1 : Ceci est une description.",
+  "Image 2 : Une autre belle image.",
+  "Image 3 : Rétro vibes à fond.",
+  "Image 4 : Look Windows 98 classique.",
+  "Image 5 : Détails pixel art.",
+  "Image 6 : Composition minimaliste.",
+  "Image 7 : Couleurs pastels douces.",
+  "Image 8 : Expérience utilisateur rétro.",
+  "Image 9 : Nostalgie pure.",
+  "Image 10 : Dernière image avant vidéo.",
+  "Vidéo : Animation ou démonstration en action."
+];
+
+const descriptionEl = document.getElementById("gallery-description");
+
+function updateGallery() {
+  if (currentIndex < images.length) {
+    galleryImage.src = images[currentIndex];
+    galleryImage.style.display = "block";
+    galleryVideo.pause();
+    galleryVideo.style.display = "none";
+  } else {
+    galleryImage.style.display = "none";
+    galleryVideo.src = video;
+    galleryVideo.style.display = "block";
+    if (!videoPlayed) {
+      galleryVideo.play();
+      videoPlayed = true;
     }
   }
+
+  // Update the description text
+  descriptionEl.textContent = descriptions[currentIndex];
+}
 
   document.querySelector(".gallery-arrow.left").addEventListener("click", () => {
     if (currentIndex > 0) {
@@ -92,7 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
       updateGallery();
     }
   });
+  
 
+  
   document.querySelector(".gallery-arrow.right").addEventListener("click", () => {
     if (currentIndex < images.length) {
       currentIndex++;
@@ -133,4 +154,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   updateGallery();
+
+  document.querySelectorAll('.taskbar-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const targetId = button.getAttribute('data-target');
+    const win = document.getElementById(targetId);
+
+    const isMinimized = win.style.display === 'none';
+
+    // Toggle visibility
+    win.style.display = isMinimized ? 'block' : 'none';
+
+    // Bring to front (if showing)
+    if (isMinimized) {
+      win.style.zIndex = '15';
+      // Reset other windows z-index
+      document.querySelectorAll('.window').forEach(otherWin => {
+        if (otherWin !== win) otherWin.style.zIndex = '10';
+      });
+    }
+
+    // Toggle button glow
+    button.classList.toggle('active', isMinimized);
+  });
+  });
+  const targetId = button.getAttribute('data-target');
+const win = document.getElementById(targetId);
+
+
+
 });
+
