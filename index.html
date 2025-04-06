@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <link rel="icon" type="png" href="98ico.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio Windows 98</title>
@@ -25,7 +24,26 @@
       <img id="wallpaper" src="98_wallpaper.png" alt="Wallpaper" />
 
       <!-- Windows on top of wallpaper -->
-      <div class="window" id="window-about" style="top: 100px; left: 100px; display: none;">
+    <div class="window" id="window-contact" style="top: 200px; left: 200px; display: none;">
+	  <div class="title-bar">
+		<span>Contact</span>
+		<div class="window-controls">
+		  <button class="btn-minimize">_</button>
+		  <button class="btn-maximize">▢</button>
+		  <button class="btn-close">✕</button>
+		</div>
+	  </div>
+	  <div class="window-content">
+		<p>Tu peux me contacter par email à <b>votremail@example.com</b> ou sur mes réseaux sociaux 📫</p>
+	  </div>
+	</div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  <div class="window" id="window-about" style="top: 100px; left: 100px; display: none;">
         <div class="title-bar">
           <span>À propos de moi</span>
           <div class="window-controls">
@@ -60,8 +78,10 @@
       </div>
     </div>
   <div id="floating-taskbar">
+	  
 	  <button class="taskbar-btn" data-target="window-about"><b>A propos</b></button>
 	  <button class="taskbar-btn" data-target="window-work"><b>Mes travaux</b></button>
+	  <button class="taskbar-btn" data-target="window-contact"><b>Contact</b></button>
   </div>
   </div>
 

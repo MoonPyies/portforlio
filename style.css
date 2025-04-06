@@ -138,7 +138,7 @@ html, body {
 #floating-taskbar {
   position: absolute;
   bottom: 32.5px;
-  left: 43.35%;
+  left: 46.4%;
   transform: translateX(-50%);
   display: flex;
   gap: 6px;
