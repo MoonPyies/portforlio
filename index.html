@@ -8,23 +8,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Startup Prompt -->
+
   <div id="startup-prompt">
     <button id="start-btn" class="win98-button">Demarrer (Son fort)</button>
   </div>
 
-  <!-- Startup Screen -->
+
   <div id="startup-screen" style="display: none;">
     <img src="boot_animation.gif" alt="Startup Animation" />
     <audio id="startup-sound" src="startup_sound.mp3"></audio>
   </div>
 
-  <!-- Desktop Background -->
+
   <div id="desktop" style="display: none;">
     <div id="wallpaper-container" >
       <img id="wallpaper" src="98_wallpaper.png" alt="Wallpaper" />
 
-      <!-- Windows on top of wallpaper -->
+
     <div class="window" id="window-contact" style="top: 200px; left: 200px; display: none;">
 	  <div class="title-bar">
 		<span>Contact</span>
@@ -92,13 +92,13 @@
     </div>
   </div>
 
-  <!-- Fullscreen Image Viewer -->
+
   <div id="fullscreen-overlay" class="fullscreen" style="display: none;">
     <button id="close-fullscreen" class="fullscreen-close">✕</button>
     <img id="fullscreen-img" src="" alt="Fullscreen" />
   </div>
 
-  <!-- Fullscreen Video Viewer -->
+  
   <div id="video-overlay" class="fullscreen" style="display: none;">
     <button id="close-video-fullscreen" class="fullscreen-close">✕</button>
     <video id="fullscreen-video" controls autoplay></video>
