@@ -142,14 +142,13 @@ html, body {
 #floating-taskbar {
   position: absolute;
   bottom: 5.5px;
-  left: 43.8%;
+  left: 43.5%;
   transform: translateX(-50%);
   display: flex;
   gap: 6px;
   z-index: 1000;
 }
 
-/* Win98-style buttons */
 .taskbar-btn {
   background: #C0C0C0;
   border: 2px outset #fff;
@@ -166,7 +165,6 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Active/focused look */
 .taskbar-btn.active {
   border: 2px inset #808080;
 }
