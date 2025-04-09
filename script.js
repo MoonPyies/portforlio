@@ -81,17 +81,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let videoPlayed = false;
 
 const descriptions = [
-  "Image 1 : Ceci est une description.",
-  "Image 2 : Une autre belle image.",
-  "Image 3 : Rétro vibes à fond.",
-  "Image 4 : Look Windows 98 classique.",
-  "Image 5 : Détails pixel art.",
-  "Image 6 : Composition minimaliste.",
-  "Image 7 : Couleurs pastels douces.",
-  "Image 8 : Expérience utilisateur rétro.",
-  "Image 9 : Nostalgie pure.",
-  "Image 10 : Dernière image avant vidéo.",
-  "Vidéo : Animation ou démonstration en action."
+   "Image 1 : Fait le 27/03/2025, le dessin a pour thème la nostalgie, il représente un menu de DS (picto-chat) avec un chat sur le coté. J'ai choisi ça car la DS est je pense une bonne representation pour une enfance dont quelqu'un peut être nostalgique, de même pour le chat. ",
+  "Image 2 : Fait le 27/03/2025, le dessin a pour thème comme le précedent, la nostalgie. Celui ci est plus personel que les autres car quand je pense a la nostalgie je pense aux furby car ils ont eu une grande place dans mon enfance. Je les ai toujours trouvé intéressant.",
+  "Image 3 : Fait le 30/03/2025, j'ai énormément apprécié faire celui ci, majoritairement parce que j'adore les bourdons et j'ai toujours voulu en dessiner, je pense qu'il fait parti avec le dernier, de l'un de mes préférés. Il fait parti de la catégorie 'Hope Core' l'un de mes core préférés.",
+  "Image 4 : Fait le 11/017/2024, je ne me souviens plus trop de celui-ci, cependant je sais qu'il mentionne l'enfance avec le furby mais aussi le 'very hungry caterpillar' qui au moment ou j'ai fait le dessin revenais un peu a la mode.",
+  "Image 5 : Fait le 01/06/2025, celui a pour thème pokémon et les clown, a cette période là je me suis essayé a dessiner des clowns, j'ai fait Sonic, Amy, Métal Sonic et le Original Character de quelqu'un en ligne qui m'en avait demander un.",
+  "Image 6 : Fait le 24/10/24, je l'ai fait lors de L'INKTOBER, le thème donner était 'Self-care', du coup j'ai pensé a quelqu'un nettoyant et appréciant des vétements propre. Le personnage est mon OC",
+  "Image 7 : Fait le 02/10/24, il est lui aussi issue de mon INKTOBER, le thème était 'Pumkin' et j'ai donc déssiner une citrouille avec Jybanian sous sa forme de chat qui est un Yokai dans Yokai-Watch.",
+  "Image 8 : Fait le 28/01/25, celui-ci est un plus abstrait, j'ai dessiner une représentation personel d'une sorte de paranoia, un nid d'yeux qui vous observe de haut et qui vous surplombe de manière imposante..",
+  "Image 9 : Fait le 12/10/24, je l'ai fait durant le INKTOBER, il représente un chat qui est issue de l'un de mes artistes préférés : Louis Wain, j'ai essayé de refaire un de ses déssins dans 'mon style'.",
+  "Image 10 :Fait le 18/01/25, c'est un écran d'attente pour mes stream quand ils vont bientot démarrer. Le chien provient de Duck Hunt, j'ai refait l'animation de celui-ci. Le fond est un écran de Gambeboy",
+  "Vidéo : Fait le --/01/25, c'est un mod du personnage de Lloyd provenant de Ninjago, c'est pour le jeu Rivals of Aether et il est toujours en cours de confections."
 ];
 
 const descriptionEl = document.getElementById("gallery-description");
