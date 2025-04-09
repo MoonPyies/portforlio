@@ -37,7 +37,11 @@ body {
   justify-content: center;
   z-index: 9998;
 }
-
+#startup-screen img {
+  width: 1156px;
+  height: 864px;
+  object-fit: cover;
+}
 html, body {
   margin: 0;
   padding: 0;
