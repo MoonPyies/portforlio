@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fullscreenVideo = document.getElementById("fullscreen-video");
   const closeVideoFullscreen = document.getElementById("close-video-fullscreen");
 
-  // Launch startup sequence
+
   startBtn.addEventListener("click", () => {
     document.getElementById("startup-prompt").style.display = "none";
     startupScreen.style.display = "flex";
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 8000);
   });
 
-  // Window dragging
+  // bouge les fenetres la
   document.querySelectorAll(".window").forEach(win => {
     const titleBar = win.querySelector(".title-bar");
     let offsetX, offsetY, isDragging = false;
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Gallery
+  // l'art
   const images = [
   "Art/image1.png",
   "Art/image2.png",
@@ -112,7 +112,6 @@ function updateGallery() {
     }
   }
 
-  // Update the description text
   descriptionEl.textContent = descriptions[currentIndex];
 }
 
@@ -173,19 +172,18 @@ function updateGallery() {
 
     const isMinimized = win.style.display === 'none';
 
-    // Toggle visibility
+
     win.style.display = isMinimized ? 'block' : 'none';
 
-    // Bring to front (if showing)
+
     if (isMinimized) {
       win.style.zIndex = '15';
-      // Reset other windows z-index
+
       document.querySelectorAll('.window').forEach(otherWin => {
         if (otherWin !== win) otherWin.style.zIndex = '10';
       });
     }
 
-    // Toggle button glow
     button.classList.toggle('active', isMinimized);
   });
   });
