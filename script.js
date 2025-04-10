@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   "Art/image7.png",
   "Art/image8.png",
   "Art/image9.png",
-  "Art/image10.gif" // <- Use a GIF here
+  "Art/image10.gif" 
 ];
   const video = "Video/sample.mp4";
   const galleryImage = document.getElementById("gallery-image");
